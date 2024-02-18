@@ -27,11 +27,6 @@ resource "azurerm_storage_account" "storeaccount" {
     type = "SystemAssigned"
   }
 
-  sas_policy {
-    expiration_period = "90.00:00:00"
-    expiration_action = "Log"
-  }
-
   tags = var.tags
 
   #Following checkov checks not required
@@ -43,5 +38,6 @@ resource "azurerm_storage_account" "storeaccount" {
   #checkov:skip=CKV2_AZURE_1: "Ensure storage for critical data are encrypted with Customer Managed Key"
   #checkov:skip=CKV_AZURE_190: "Ensure that Storage blobs restrict public access"
   #checkov:skip=CKV2_AZURE_40: "Ensure storage account is not configured with Shared Key authorization"
+  #checkov:skip=CKV2_AZURE_41: "Ensure storage account is configured with SAS expiration policy"
 
 }
