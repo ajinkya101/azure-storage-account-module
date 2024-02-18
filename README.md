@@ -1,1 +1,1 @@
-# azure-storage-account-module
+# azure-stg-module
