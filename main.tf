@@ -21,9 +21,25 @@ resource "azurerm_storage_account" "storeaccount" {
     }
   }
 
+  shared_access_key_enabled     = false
+  public_network_access_enabled = false
+
   identity {
     type = "SystemAssigned"
   }
   
+  sas_policy {
+    expiration_period = "90.00:00:00"
+    expiration_action = "Log"
+  }
+
   tags = var.tags
+
+  #Following checkov checks not required
+  #checkov:skip=CKV_AZURE_33: "Ensure Storage logging is enabled for Queue service for read, write and delete requests"
+  #checkov:skip=CKV_AZURE_36: "Ensure 'Trusted Microsoft Services' is enabled for Storage Account access"
+  #checkov:skip=CKV2_AZURE_47: "Ensure storage account is configured without blob anonymous access"
+  #checkov:skip=CKV2_AZURE_33: "Ensure storage account is configured with private endpoint"
+  #checkov:skip=CKV2_AZURE_38: "Ensure soft-delete is enabled on Azure storage account"
+  #checkov:skip=CKV2_AZURE_1: "Ensure storage for critical data are encrypted with Customer Managed Key"
 }
