@@ -27,7 +27,7 @@ resource "azurerm_storage_account" "storeaccount" {
   identity {
     type = "SystemAssigned"
   }
-  
+
   sas_policy {
     expiration_period = "90.00:00:00"
     expiration_action = "Log"
