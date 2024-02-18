@@ -9,7 +9,7 @@ module "storage_account1" {
   source = "./vendor/modules/storage_account"
 
   rg_name              = "test-rg"
-  region               = "eastus"
+  location             = "eastus"
   storage_account_name = "stgacc01"
   network_rules        = {
     bypass     = ["AzureServices"]
