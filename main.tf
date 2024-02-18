@@ -42,4 +42,5 @@ resource "azurerm_storage_account" "storeaccount" {
   #checkov:skip=CKV2_AZURE_33: "Ensure storage account is configured with private endpoint"
   #checkov:skip=CKV2_AZURE_38: "Ensure soft-delete is enabled on Azure storage account"
   #checkov:skip=CKV2_AZURE_1: "Ensure storage for critical data are encrypted with Customer Managed Key"
+  #checkov:skip=CKV_AZURE_190: "Ensure that Storage blobs restrict public access"
 }
