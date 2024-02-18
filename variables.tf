@@ -1,5 +1,6 @@
 variable "location" {
   description = "Azure location for deployment"
+  type        = string
   default     = "East US"
 }
 
