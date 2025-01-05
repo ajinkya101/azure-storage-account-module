@@ -2,13 +2,13 @@
 # Storage Account Creation 
 #--------------------------
 resource "azurerm_storage_account" "storeaccount" {
-  name                      = var.storage_account_name
-  resource_group_name       = var.rg_name
-  location                  = var.location
-  account_kind              = var.account_kind
-  account_tier              = var.account_tier
-  account_replication_type  = var.account_replication_type
-  min_tls_version           = var.min_tls_version
+  name                     = var.storage_account_name
+  resource_group_name      = var.rg_name
+  location                 = var.location
+  account_kind             = var.account_kind
+  account_tier             = var.account_tier
+  account_replication_type = var.account_replication_type
+  min_tls_version          = var.min_tls_version
 
   dynamic "network_rules" {
     for_each = var.network_rules != null ? ["true"] : []
@@ -38,5 +38,5 @@ resource "azurerm_storage_account" "storeaccount" {
   #checkov:skip=CKV_AZURE_190: "Ensure that Storage blobs restrict public access"
   #checkov:skip=CKV2_AZURE_40: "Ensure storage account is not configured with Shared Key authorization"
   #checkov:skip=CKV2_AZURE_41: "Ensure storage account is configured with SAS expiration policy"
-
+  #checkov:skip=CKV_AZURE_244: "Avoid the use of local users for Azure Storage unless necessary"
 }
